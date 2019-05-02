@@ -9,7 +9,7 @@ public class StackWithFixedSize<Element> {
 	}
 
 	public void push(Element newValue) {
-		if (count < values.length) {
+		if (!isFull()) {
 			values[count++] = newValue;
 		} else {
 			System.out.printf("%s", "Stack overflow!\n");
@@ -18,7 +18,9 @@ public class StackWithFixedSize<Element> {
 
 	public Element pop() {
 		if (!isEmpty()) {
-			return values[--count];
+			Element element = values[--count];
+			values[count] = null;
+			return element;
 		} else {
 			System.out.printf("%s", "Stack underflow!\n");
 			return null;
@@ -27,6 +29,10 @@ public class StackWithFixedSize<Element> {
 
 	public boolean isEmpty() {
 		return count == 0;
+	}
+
+	public boolean isFull() {
+		return count == values.length;
 	}
 
 	public int size() {
