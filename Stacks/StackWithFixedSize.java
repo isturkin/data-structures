@@ -27,6 +27,16 @@ public class StackWithFixedSize<Element> {
 		}
 	}
 
+	public Element peek() {
+		if (!isEmpty()) {
+			int top = count - 1;
+			return values[top];
+		} else {
+			System.out.printf("%s", "Stack underflow!\n");
+			return null;
+		}
+	}
+
 	public boolean isEmpty() {
 		return count == 0;
 	}
@@ -45,6 +55,9 @@ public class StackWithFixedSize<Element> {
 		stack.push(12);
 		stack.push(5);
 		stack.push(3);
+
+		//check peek() method
+		System.out.println("Peek an element on the top: " + stack.peek());
 		
 		//try to push 4th element(stack overflow)
 		stack.push(10);
