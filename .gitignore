@@ -4,3 +4,4 @@
 
 #Obj files
 *.class
+*.o
